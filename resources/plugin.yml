@@ -1,0 +1,27 @@
+name: ProBending
+main: net.avatar.realms.spigot.probending.ProbendingPlugin
+author: Nokorbis
+description: Plugin to help for probending tournament management
+version: 1.0.0
+softdepend: [Multiverse-Core]
+load: POSTWORLD
+commands:
+   probending:
+      description: Probending commands.
+      aliases: [pb, probend]
+      usage: /<command> ?
+permissions:
+   probending.admin.*:
+       default: op
+       description: Gives access to all Probending admin command
+       children:
+          probending.admin.manage: true
+   probending.tournament.manage:
+      default: false
+      description: Allows player to manage a probending tournament
+   probending.team.manage:
+      default: true
+      description: Allows player to manage a probending team
+   probending.tournament.join:
+      default: true
+      description: Allows a player to make his team join a tournament
