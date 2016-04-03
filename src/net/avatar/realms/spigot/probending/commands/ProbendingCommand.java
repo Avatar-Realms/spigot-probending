@@ -15,9 +15,11 @@ public abstract class ProbendingCommand implements ICommand {
     protected String command;
     protected List<String> aliases;
     protected String basePermission;
+    private List<ProbendingCommand> subCommands;
 
     public ProbendingCommand() {
         this.aliases = new LinkedList<String>();
+        this.subCommands = new LinkedList<ProbendingCommand>();
     }
 
     @Override

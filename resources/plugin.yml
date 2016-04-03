@@ -15,13 +15,20 @@ permissions:
        default: op
        description: Gives access to all Probending admin command
        children:
-          probending.admin.manage: true
+          probending.tournament.manage: true
+          probending.admin.team.delete: true
    probending.tournament.manage:
       default: false
       description: Allows player to manage a probending tournament
    probending.team.manage:
       default: true
-      description: Allows player to manage a probending team
-   probending.tournament.join:
+      description: Allows player to manage a probending team (create and invite for)
+   probending.team.join:
       default: true
-      description: Allows a player to make his team join a tournament
+      description: Allows player to accept a team invitation
+   probending.tournament.register:
+      default: true
+      description: Allows a player to register his team for a tournament
+   probending.admin.team.delete:
+      default: false
+      description: Allows a player to delete teams, even ones of other players
