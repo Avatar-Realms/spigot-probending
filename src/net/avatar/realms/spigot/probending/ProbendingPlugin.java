@@ -1,5 +1,6 @@
 package net.avatar.realms.spigot.probending;
 
+import net.avatar.realms.spigot.probending.commands.ProbendingCommands;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -9,9 +10,14 @@ public class ProbendingPlugin extends JavaPlugin {
 
     private static ProbendingPlugin instance;
 
+    private ProbendingCommands commands;
+
     @Override
     public void onEnable() {
         instance = this;
+        commands = new ProbendingCommands();
+        getCommand("probending").setExecutor(commands);
+        getCommand("probending").setTabCompleter(commands);
     }
 
     @Override
