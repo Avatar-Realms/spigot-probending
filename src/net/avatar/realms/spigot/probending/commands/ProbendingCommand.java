@@ -43,6 +43,9 @@ public abstract class ProbendingCommand implements ICommand {
     @Override
     public boolean execute (CommandSender sender, List<String> args) throws ProbendingException {
         //Default implementation : Check for subcommands
+        if (args.isEmpty()) {
+            throw new ProbendingException("error.command.argument.more");
+        }
         String subCommand = args.remove(0);
 
         for (ProbendingCommand command : this.subCommands) {
