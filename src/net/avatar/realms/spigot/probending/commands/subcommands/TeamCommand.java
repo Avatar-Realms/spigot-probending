@@ -13,5 +13,6 @@ public class TeamCommand extends ProbendingCommand {
 
         addSubCommand(new TeamCreateCommand());
         addSubCommand(new TeamRenameCommand());
+        addSubCommand(new TeamDeleteCommand());
     }
 }
