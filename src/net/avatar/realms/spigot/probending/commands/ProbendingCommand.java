@@ -66,13 +66,15 @@ public abstract class ProbendingCommand implements ICommand {
     }
 
     @Override
-    public void printUsage(CommandSender sender) {
-        printUsage(sender, true);
-    }
-
-    @Override
     public String getCommand() {
         return this.command;
+    }
+
+    public void printUsage(CommandSender sender) {
+        //Default implementation : Display subcommand usage
+        for (ProbendingCommand subCommand : subCommands) {
+            subCommand.printUsage(sender);
+        }
     }
 
     @Override

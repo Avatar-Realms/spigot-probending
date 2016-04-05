@@ -72,4 +72,11 @@ public class Container {
             }
         }
     }
+
+    public void removeTeam(ProbendingTeam team) {
+        if (team != null) {
+            data.delete(team);
+            teams.remove(team.getName().toLowerCase());
+        }
+    }
 }

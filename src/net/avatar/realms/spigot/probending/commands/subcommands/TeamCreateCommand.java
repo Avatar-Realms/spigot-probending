@@ -6,6 +6,7 @@ import net.avatar.realms.spigot.probending.exceptions.ProbendingException;
 import net.avatar.realms.spigot.probending.exceptions.ProbendingPermissionException;
 import net.avatar.realms.spigot.probending.exceptions.ProbendingPlayerCommandException;
 import net.avatar.realms.spigot.probending.models.ProbendingTeam;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -46,7 +47,7 @@ public class TeamCreateCommand extends ProbendingCommand {
     }
 
     @Override
-    public void printUsage(CommandSender sender, boolean permission) {
-
+    public void printUsage(CommandSender sender) {
+        sender.sendMessage(ChatColor.AQUA + "/probending team create <NAME>");
     }
 }

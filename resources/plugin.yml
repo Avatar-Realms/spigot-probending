@@ -17,6 +17,7 @@ permissions:
        children:
           probending.tournament.manage: true
           probending.admin.team.delete: true
+          probending.admin.team.rename: true
    probending.tournament.manage:
       default: false
       description: Allows player to manage a probending tournament
@@ -32,3 +33,6 @@ permissions:
    probending.admin.team.delete:
       default: false
       description: Allows a player to delete teams, even ones of other players
+   probending.admin.team.rename:
+      default: false
+      description: Allows a player to rename teams, even ones of other players
