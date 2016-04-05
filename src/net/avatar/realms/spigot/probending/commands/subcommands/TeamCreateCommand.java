@@ -41,7 +41,7 @@ public class TeamCreateCommand extends ProbendingCommand {
         team = new ProbendingTeam();
         team.setName(name);
         team.addMember((Player) sender);
-
+        Container.getInstance().addTeam(team);
         return true;
     }
 
