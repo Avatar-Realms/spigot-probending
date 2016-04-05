@@ -39,7 +39,7 @@ public class TeamRenameCommand extends ProbendingCommand {
             throw new ProbendingException("error.command.rename.allowed");
         }
 
-        String newName = args.remove(1);
+        String newName = args.remove(0);
         ProbendingTeam test = Container.getInstance().getTeam(newName);
         if (test != null) {
             throw new ProbendingException("error.team.name.used");

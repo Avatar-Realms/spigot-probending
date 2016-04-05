@@ -21,7 +21,7 @@ public class TournamentCommand extends ProbendingCommand {
     }
 
     @Override
-    public void printUsage(CommandSender sender, boolean permission) {
+    public void printUsage(CommandSender sender) {
 
     }
 }

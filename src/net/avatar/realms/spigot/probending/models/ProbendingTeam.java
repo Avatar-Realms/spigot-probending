@@ -27,8 +27,14 @@ public class ProbendingTeam {
      */
     private int wonTournament;
 
+    /**
+     * Players that has been invited to join the the team
+     */
+    private Set<Player> invitedPlayers;
+
     public ProbendingTeam() {
         this.members = new HashSet<Player>();
+        this.invitedPlayers = new HashSet<Player>();
         this.wonTournament = 0;
     }
 
@@ -65,6 +71,25 @@ public class ProbendingTeam {
 
     public void setWonTournament(int won) {
         this.wonTournament = (won < 0)? 0 : won;
+    }
+
+    public void invite(Player player) {
+        this.invitedPlayers.add(player);
+    }
+
+    public boolean isInvited(Player player) {
+        return this.invitedPlayers.contains(player);
+    }
+
+    public boolean join(Player player) {
+        if (invitedPlayers.contains(player)) {
+            members.add(player);
+            invitedPlayers.remove(player);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 
