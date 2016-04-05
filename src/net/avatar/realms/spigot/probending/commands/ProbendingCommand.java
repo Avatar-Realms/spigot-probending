@@ -1,6 +1,9 @@
 package net.avatar.realms.spigot.probending.commands;
 
+import net.avatar.realms.spigot.probending.exceptions.ProbendingException;
+import net.avatar.realms.spigot.probending.exceptions.ProbendingUnexistingCommandException;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -14,7 +17,7 @@ public abstract class ProbendingCommand implements ICommand {
 
     protected String command;
     protected List<String> aliases;
-    protected String basePermission;
+
     private List<ProbendingCommand> subCommands;
 
     public ProbendingCommand() {
@@ -35,6 +38,19 @@ public abstract class ProbendingCommand implements ICommand {
         }
 
         return false;
+    }
+
+    @Override
+    public boolean execute (CommandSender sender, List<String> args) throws ProbendingException {
+        //Default implementation : Check for subcommands
+        String subCommand = args.remove(0);
+
+        for (ProbendingCommand command : this.subCommands) {
+            if (command.isCommand(subCommand)) {
+                return command.execute(sender, args);
+            }
+        }
+        throw new ProbendingUnexistingCommandException();
     }
 
     protected Player getPlayer(String name) {
@@ -61,11 +77,7 @@ public abstract class ProbendingCommand implements ICommand {
         return new LinkedList<String>();
     }
 
-    @Override
-    public final boolean hasBasePermission(CommandSender sender) {
-        if (sender.hasPermission(this.basePermission)) {
-            return true;
-        }
-        return false;
+    protected void addSubCommand(ProbendingCommand subCommand) {
+        this.subCommands.add(subCommand);
     }
 }

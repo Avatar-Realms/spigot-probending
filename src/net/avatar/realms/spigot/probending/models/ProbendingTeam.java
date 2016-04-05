@@ -22,8 +22,14 @@ public class ProbendingTeam {
      */
     private Set<Player> members;
 
+    /**
+     * The number of tournament this team has won.
+     */
+    private int wonTournament;
+
     public ProbendingTeam() {
         this.members = new HashSet<Player>();
+        this.wonTournament = 0;
     }
 
     public void setName(String name) throws ProbendingTeamNameException {
@@ -47,6 +53,18 @@ public class ProbendingTeam {
 
     public void removeMember(Player player) {
         this.members.remove(player);
+    }
+
+    public boolean isMember(Player player) {
+        return this.members.contains(player);
+    }
+
+    public int getWonTournament() {
+        return this.wonTournament;
+    }
+
+    public void setWonTournament(int won) {
+        this.wonTournament = (won < 0)? 0 : won;
     }
 
 

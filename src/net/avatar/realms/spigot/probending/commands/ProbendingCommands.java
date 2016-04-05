@@ -37,13 +37,12 @@ public class ProbendingCommands implements CommandExecutor, TabCompleter {
 
         for (ICommand command : this.commands) {
             if (command.isCommand(subCommand)) {
-                if (command.hasBasePermission(sender)) {
+                try {
                     return command.execute(sender, argList);
                 }
-                else {
-                    sender.sendMessage(ChatColor.RED + Messages.get("error.command.permission"));
+                catch (Exception e) {
+                    sender.sendMessage(ChatColor.RED + e.getMessage());
                 }
-                return true;
             }
         }
         return false;
@@ -53,7 +52,7 @@ public class ProbendingCommands implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command label, String s, String[] args) {
         List<String> result = new ArrayList<String>();
         if (args.length == 0) {
-            result.add("bending");
+            result.add("probending");
         }
         else if (args.length == 1) {
             List<String> values = new LinkedList<String>();

@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface ICommand {
 
-    boolean execute(CommandSender sender, List<String> args);
+    boolean execute(CommandSender sender, List<String> args) throws Exception;
 
     void printUsage(CommandSender sender);
 
@@ -30,7 +30,4 @@ public interface ICommand {
      * @return List<String> of possible values
      */
     public List<String> autoComplete(CommandSender sender, List<String> args);
-
-    public boolean hasBasePermission(CommandSender sender);
-
 }
