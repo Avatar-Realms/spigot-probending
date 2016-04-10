@@ -7,13 +7,22 @@ import java.util.*;
  */
 public class ProbendingTournament {
 
+    private static ProbendingTournament instance = null;
+
     private Set<ProbendingTeam> registeredTeams;
 
     private Map<TournamentPhase, List<ProbendingMatch>> matches;
 
     private TournamentPhase currentPhase;
 
-    public ProbendingTournament() {
+    public static ProbendingTournament getTournament() {
+        if (instance == null) {
+            instance = new ProbendingTournament();
+        }
+        return instance;
+    }
+
+    private ProbendingTournament() {
         this.currentPhase = TournamentPhase.ELIMINATIONS;
         this.registeredTeams = new HashSet<ProbendingTeam>();
         matches = new HashMap<TournamentPhase, List<ProbendingMatch>>();
@@ -21,14 +30,21 @@ public class ProbendingTournament {
     }
 
     public void register(ProbendingTeam team) {
-
-    }
-
-    public boolean isRegistered(ProbendingTeam team) {
-        return registeredTeams.contains(team);
+        if (team != null) {
+            registeredTeams.add(team);
+        }
     }
 
     public void unregister(ProbendingTeam team) {
-        registeredTeams.remove(team);
+        if (registeredTeams != null) {
+            registeredTeams.remove(team);
+        }
+    }
+
+    public boolean isRegistered(ProbendingTeam team) {
+        if (registeredTeams == null) {
+            return false;
+        }
+        return registeredTeams.contains(team);
     }
 }
