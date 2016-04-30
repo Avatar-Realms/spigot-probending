@@ -36,7 +36,7 @@ public abstract class ArmorHelper {
 
     public static ItemStack newBlueChestplate() {
         ItemStack helmet = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        setMeta(helmet, RED, Messages.get("probending.armors.chestplate"), Messages.get("probending.armors.blue"));
+        setMeta(helmet, BLUE, Messages.get("probending.armors.chestplate"), Messages.get("probending.armors.blue"));
         return helmet;
     }
 
@@ -48,7 +48,7 @@ public abstract class ArmorHelper {
 
     public static ItemStack newBlueLeggings() {
         ItemStack helmet = new ItemStack(Material.LEATHER_LEGGINGS, 1);
-        setMeta(helmet, RED, Messages.get("probending.armors.leggings"), Messages.get("probending.armors.blue"));
+        setMeta(helmet, BLUE, Messages.get("probending.armors.leggings"), Messages.get("probending.armors.blue"));
         return helmet;
     }
 
@@ -60,7 +60,7 @@ public abstract class ArmorHelper {
 
     public static ItemStack newBlueBoots() {
         ItemStack helmet = new ItemStack(Material.LEATHER_BOOTS, 1);
-        setMeta(helmet, RED, Messages.get("probending.armors.boots"), Messages.get("probending.armors.blue"));
+        setMeta(helmet, BLUE, Messages.get("probending.armors.boots"), Messages.get("probending.armors.blue"));
         return helmet;
     }
 
