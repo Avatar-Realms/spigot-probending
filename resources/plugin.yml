@@ -18,6 +18,9 @@ permissions:
           probending.tournament.manage: true
           probending.admin.team.delete: true
           probending.admin.team.rename: true
+          probending.admin.team.invite: true
+          probending.admin.team.listmembers: true
+          probending.command.team.list: true
    probending.tournament.manage:
       default: false
       description: Allows player to manage a probending tournament
@@ -36,3 +39,12 @@ permissions:
    probending.admin.team.rename:
       default: false
       description: Allows a player to rename teams, even ones of other players
+   probending.admin.team.invite:
+      default: false
+      descritpion: Allows an admin to invite a player in someone else's team.
+   probending.command.team.list:
+      default: true
+      description: Allows a player to list all teams
+   probending.admin.team.listmembers:
+      default: true
+      description: Allows an admin to list members of a team

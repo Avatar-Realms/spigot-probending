@@ -1,3 +1,7 @@
+# Team configuration
+max_team_per_player: 1
+
+# Tournament configuration
 eliminatory_wins: 1
 qualification_wins: 2
 final_wins: 3
