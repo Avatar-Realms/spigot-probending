@@ -43,7 +43,7 @@ public class TeamInviteCommand extends ProbendingCommand {
             throw new ProbendingException("error.team.unexisting");
         }
         Player player = (Player) sender;
-        if (!team.isMember(player)) {
+        if (!team.isMember(player) && !player.hasPermission("probending.admin.team.invite")) {
             throw new ProbendingException("error.team.notmember");
         }
 

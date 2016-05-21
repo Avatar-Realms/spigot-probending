@@ -2,8 +2,8 @@
     <target name="init">
         <property name="launcher" value="run.bat" />
         <property name="sourceDir" value="src" />
-        <property name="javaDir" value="src/main/java" />
-        <property name="rscDir" value="src/main/resources" />
+        <property name="javaDir" value="src/" />
+        <property name="rscDir" value="resources/" />
         <property name="outputDir" value="bin" />
         <property name="libdir" value="libs" />
         <property name="jarname" value="spigot-probending" />

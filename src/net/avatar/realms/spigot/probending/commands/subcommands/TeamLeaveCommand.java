@@ -20,7 +20,7 @@ public class TeamLeaveCommand extends ProbendingCommand {
     public TeamLeaveCommand() {
         super();
         this.command = "leave";
-        this.aliases.add("l");
+        this.aliases.add("le");
     }
 
     public boolean execute(CommandSender sender, List<String> args) throws ProbendingException {
