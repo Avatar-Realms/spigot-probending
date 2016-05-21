@@ -1,4 +1,4 @@
-package net.avatar.realms.spigot.probending.commands.subcommands;
+package net.avatar.realms.spigot.probending.commands.subcommands.teams;
 
 import net.avatar.realms.spigot.probending.commands.ProbendingCommand;
 import net.avatar.realms.spigot.probending.data.Container;
@@ -14,49 +14,41 @@ import java.util.List;
 /**
  * Created by Nokorbis on 5/04/2016.
  */
-public class TeamRenameCommand extends ProbendingCommand {
-
-    public TeamRenameCommand() {
+public class TeamDeleteCommand extends ProbendingCommand {
+    public TeamDeleteCommand() {
         super();
-        this.command = "rename";
-        this.aliases.add("name");
+        this.command = "delete";
+        this.aliases.add("del");
+        this.aliases.add("d");
     }
 
     public boolean execute(CommandSender sender, List<String> args) throws ProbendingException {
         if (!sender.hasPermission("probending.team.manage")) {
             throw new ProbendingPermissionException();
         }
-        if (args.size() < 2) {
+        if (args.isEmpty()) {
             throw new ProbendingException("error.command.argument.more");
         }
-
-        String oldName = args.remove(0);
-        ProbendingTeam team = Container.getInstance().getTeam(oldName);
+        String name = args.remove(0);
+        ProbendingTeam team = Container.getInstance().getTeam(name);
         if (team == null) {
             throw new ProbendingException("error.team.unexisting");
         }
-        if (isAllowedToRename(sender, team)) {
+        if (isAllowedToDelete(sender, team)) {
             throw new ProbendingException("error.command.rename.allowed");
         }
 
-        String newName = args.remove(0);
-        ProbendingTeam test = Container.getInstance().getTeam(newName);
-        if (test != null) {
-            throw new ProbendingException("error.team.name.used");
-        }
         Container.getInstance().removeTeam(team);
-        team.setName(newName);
-        Container.getInstance().addTeam(team);
         return true;
     }
 
     @Override
     public void printUsage(CommandSender sender) {
-        sender.sendMessage(ChatColor.AQUA + "/probending team rename <OLD_NAME> <NEW_NAME>");
+        sender.sendMessage(ChatColor.AQUA + "/probending team delete <NAME>");
     }
 
-    private boolean isAllowedToRename(CommandSender sender, ProbendingTeam team) {
-        if (sender.hasPermission("probending.admin.team.rename")) {
+    private boolean isAllowedToDelete(CommandSender sender, ProbendingTeam team) {
+        if (sender.hasPermission("probending.admin.team.delete")) {
             return true;
         }
         if (sender instanceof Player) {

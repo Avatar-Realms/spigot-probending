@@ -1,4 +1,4 @@
-package net.avatar.realms.spigot.probending.commands.subcommands;
+package net.avatar.realms.spigot.probending.commands.subcommands.teams;
 
 import net.avatar.realms.spigot.probending.commands.ProbendingCommand;
 import net.avatar.realms.spigot.probending.data.Container;

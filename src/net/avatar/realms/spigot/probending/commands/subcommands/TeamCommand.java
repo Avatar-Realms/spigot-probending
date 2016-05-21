@@ -1,6 +1,9 @@
 package net.avatar.realms.spigot.probending.commands.subcommands;
 
 import net.avatar.realms.spigot.probending.commands.ProbendingCommand;
+import net.avatar.realms.spigot.probending.commands.subcommands.teams.TeamCreateCommand;
+import net.avatar.realms.spigot.probending.commands.subcommands.teams.TeamDeleteCommand;
+import net.avatar.realms.spigot.probending.commands.subcommands.teams.TeamRenameCommand;
 
 /**
  * Created by Nokorbis on 3/04/2016.
