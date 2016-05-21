@@ -1,5 +1,5 @@
 name: ProBending
-main: ProbendingPlugin
+main: net.bendercraft.spigot.probending.ProbendingPlugin
 author: Nokorbis
 description: Plugin to help for probending tournament management
 version: 1.0.0
