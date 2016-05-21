@@ -1,5 +1,5 @@
 name: ProBending
-main: net.avatar.realms.spigot.probending.ProbendingPlugin
+main: ProbendingPlugin
 author: Nokorbis
 description: Plugin to help for probending tournament management
 version: 1.0.0
