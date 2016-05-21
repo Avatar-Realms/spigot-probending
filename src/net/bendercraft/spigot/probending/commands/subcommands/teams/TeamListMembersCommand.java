@@ -28,23 +28,31 @@ public class TeamListMembersCommand extends ProbendingCommand {
         if (!(sender instanceof Player)) {
             throw new ProbendingPlayerCommandException();
         }
-        if (!sender.hasPermission("probending.admin.team.list")) {
+        if (!sender.hasPermission("probending.command.team.listmembers")) {
             throw new ProbendingPermissionException();
         }
+        if (args.isEmpty()) {
+            throw new ProbendingException("error.command.argument.name");
+        }
 
-        Collection<ProbendingTeam> teams = Container.getInstance().getTeams();
+        String name = args.remove(0);
+        ProbendingTeam team = Container.getInstance().getTeam(name);
+        if (team == null) {
+            throw new ProbendingException("error.team.unexisting");
+        }
 
-        sender.sendMessage(ChatColor.BOLD + "Teams : ");
-        if (teams.isEmpty()) {
-            sender.sendMessage("   - None");
+        sender.sendMessage(ChatColor.BOLD + "Team members : ");
+        if (team.getMembers().isEmpty()) {
+            sender.sendMessage("   - No members. This team may need to be deleted.");
         }
         else {
-            for (ProbendingTeam team : teams) {
-                sender.sendMessage("   - " + team.getName());
+            for (Player member : team.getMembers()) {
+                sender.sendMessage("   - " + member.getName());
             }
         }
 
         return true;
+
     }
 
     @Override

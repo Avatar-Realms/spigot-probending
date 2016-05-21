@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.bendercraft.spigot.probending.ProbendingPlugin;
 import net.bendercraft.spigot.probending.models.ProbendingTeam;
+import org.bukkit.Bukkit;
 
 import java.io.*;
 import java.util.Collection;
@@ -30,8 +31,8 @@ public class JsonDataPersistence implements IDataPersistence {
         gson = builder.create();
         if (!dataFolder.exists()) {
             dataFolder.mkdirs();
-            this.dataFolder = dataFolder;
         }
+        this.dataFolder = dataFolder;
         filter = new JsonFilenameFilter();
     }
 
@@ -44,7 +45,8 @@ public class JsonDataPersistence implements IDataPersistence {
         Collection<ProbendingTeam> teams = new LinkedList<ProbendingTeam>();
 
         for (File file : teamFolder.listFiles(filter)) {
-            ProbendingTeam team = loadTeam(file.getName().replace(EXT, ""));
+            ProbendingPlugin.getInstance().getLogger().info("Team : " + file.getName());
+            ProbendingTeam team = loadTeam(teamFolder, file.getName().replace(EXT, ""));
             if (team != null) {
                 teams.add(team);
             }
@@ -53,13 +55,12 @@ public class JsonDataPersistence implements IDataPersistence {
         return teams;
     }
 
-    @Override
-    public ProbendingTeam loadTeam(String name) {
-        File teamFolder = getTeamFolder();
+    public ProbendingTeam loadTeam(File teamFolder, String name) {
         File file = new File(teamFolder, name + EXT);
         if (!file.exists() || !file.isFile()) {
             return null;
         }
+
         try {
             InputStream is = new FileInputStream(file);
             InputStreamReader reader = new InputStreamReader(is, CHARSET);
@@ -76,6 +77,12 @@ public class JsonDataPersistence implements IDataPersistence {
             ProbendingPlugin.getInstance().getLogger().warning("Was not able to read a file while loading a team");
         }
         return null;
+    }
+
+    @Override
+    public ProbendingTeam loadTeam(String name) {
+        File teamFolder = getTeamFolder();
+        return loadTeam(teamFolder, name);
     }
 
     @Override

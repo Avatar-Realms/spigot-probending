@@ -34,11 +34,12 @@ public class TeamDeleteCommand extends ProbendingCommand {
         if (team == null) {
             throw new ProbendingException("error.team.unexisting");
         }
-        if (isAllowedToDelete(sender, team)) {
-            throw new ProbendingException("error.command.rename.allowed");
+        if (!isAllowedToDelete(sender, team)) {
+            throw new ProbendingException("error.command.delete.allowed");
         }
 
         Container.getInstance().removeTeam(team);
+        sender.sendMessage(ChatColor.YELLOW + "You successfully deleted the team : " + name);
         return true;
     }
 

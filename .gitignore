@@ -62,4 +62,5 @@ crashlytics-build.properties
 
 #ANT
 build.xml
+bin/
 

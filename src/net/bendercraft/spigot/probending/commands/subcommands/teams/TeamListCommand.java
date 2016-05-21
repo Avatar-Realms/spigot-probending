@@ -10,6 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -27,26 +28,19 @@ public class TeamListCommand extends ProbendingCommand {
         if (!(sender instanceof Player)) {
             throw new ProbendingPlayerCommandException();
         }
-        if (!sender.hasPermission("probending.command.team.listmembers")) {
+        if (!sender.hasPermission("probending.admin.team.list")) {
             throw new ProbendingPermissionException();
         }
-        if (args.isEmpty()) {
-            throw new ProbendingException("error.command.argument.name");
-        }
 
-        String name = args.remove(0);
-        ProbendingTeam team = Container.getInstance().getTeam(name);
-        if (team == null) {
-            throw new ProbendingException("error.team.unexisting");
-        }
+        Collection<ProbendingTeam> teams = Container.getInstance().getTeams();
 
-        sender.sendMessage(ChatColor.BOLD + "Team members : ");
-        if (team.getMembers().isEmpty()) {
-            sender.sendMessage("   - No members. This team may need to be deleted.");
+        sender.sendMessage(ChatColor.BOLD + "Teams : ");
+        if (teams.isEmpty()) {
+            sender.sendMessage("   - None");
         }
         else {
-            for (Player member : team.getMembers()) {
-                sender.sendMessage("   - " + member.getName());
+            for (ProbendingTeam team : teams) {
+                sender.sendMessage("   - " + team.getName());
             }
         }
 

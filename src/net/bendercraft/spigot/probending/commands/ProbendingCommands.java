@@ -1,5 +1,7 @@
 package net.bendercraft.spigot.probending.commands;
 
+import net.bendercraft.spigot.probending.commands.subcommands.TeamCommand;
+import net.bendercraft.spigot.probending.commands.subcommands.TournamentCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,6 +22,8 @@ public class ProbendingCommands implements CommandExecutor, TabCompleter {
 
     public ProbendingCommands() {
         this.commands = new LinkedList<ICommand>();
+        commands.add(new TeamCommand());
+        commands.add(new TournamentCommand());
     }
 
     @Override

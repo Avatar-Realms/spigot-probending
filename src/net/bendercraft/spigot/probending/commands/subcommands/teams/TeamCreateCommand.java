@@ -43,6 +43,7 @@ public class TeamCreateCommand extends ProbendingCommand {
         team.setName(name);
         team.addMember((Player) sender);
         Container.getInstance().addTeam(team);
+        sender.sendMessage(ChatColor.GREEN + "You successfully created the team : " + name);
         return true;
     }
 

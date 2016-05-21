@@ -35,7 +35,7 @@ public class TeamRenameCommand extends ProbendingCommand {
         if (team == null) {
             throw new ProbendingException("error.team.unexisting");
         }
-        if (isAllowedToRename(sender, team)) {
+        if (!isAllowedToRename(sender, team)) {
             throw new ProbendingException("error.command.rename.allowed");
         }
 
@@ -47,6 +47,7 @@ public class TeamRenameCommand extends ProbendingCommand {
         Container.getInstance().removeTeam(team);
         team.setName(newName);
         Container.getInstance().addTeam(team);
+        sender.sendMessage(ChatColor.GREEN + "You successfully rename the team to : " + newName);
         return true;
     }
 
