@@ -16,11 +16,11 @@ import java.util.List;
 /**
  * Created by Nokorbis on 21/05/2016.
  */
-public class TeamListCommand extends ProbendingCommand {
-    public TeamListCommand() {
-        this.command = "list";
-        this.aliases.add("li");
-        this.aliases.add("l");
+public class TeamListMembersCommand extends ProbendingCommand {
+
+    public TeamListMembersCommand() {
+        this.command = "listmembers";
+        this.aliases.add("lm");
     }
 
     @Override
@@ -28,26 +28,19 @@ public class TeamListCommand extends ProbendingCommand {
         if (!(sender instanceof Player)) {
             throw new ProbendingPlayerCommandException();
         }
-        if (!sender.hasPermission("probending.command.team.listmembers")) {
+        if (!sender.hasPermission("probending.admin.team.list")) {
             throw new ProbendingPermissionException();
         }
-        if (args.isEmpty()) {
-            throw new ProbendingException("error.command.argument.name");
-        }
 
-        String name = args.remove(0);
-        ProbendingTeam team = Container.getInstance().getTeam(name);
-        if (team == null) {
-            throw new ProbendingException("error.team.unexisting");
-        }
+        Collection<ProbendingTeam> teams = Container.getInstance().getTeams();
 
-        sender.sendMessage(ChatColor.BOLD + "Team members : ");
-        if (team.getMembers().isEmpty()) {
-            sender.sendMessage("   - No members. This team may need to be deleted.");
+        sender.sendMessage(ChatColor.BOLD + "Teams : ");
+        if (teams.isEmpty()) {
+            sender.sendMessage("   - None");
         }
         else {
-            for (Player member : team.getMembers()) {
-                sender.sendMessage("   - " + member.getName());
+            for (ProbendingTeam team : teams) {
+                sender.sendMessage("   - " + team.getName());
             }
         }
 
@@ -56,6 +49,6 @@ public class TeamListCommand extends ProbendingCommand {
 
     @Override
     public void printUsage(CommandSender sender) {
-        sender.sendMessage(ChatColor.AQUA + "/probending team listmembers <TEAM_NAME>");
+        sender.sendMessage(ChatColor.AQUA + "/probending team create <NAME>");
     }
 }
