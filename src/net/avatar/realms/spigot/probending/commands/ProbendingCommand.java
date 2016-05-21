@@ -3,7 +3,6 @@ package net.avatar.realms.spigot.probending.commands;
 import net.avatar.realms.spigot.probending.exceptions.ProbendingException;
 import net.avatar.realms.spigot.probending.exceptions.ProbendingUnexistingCommandException;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
