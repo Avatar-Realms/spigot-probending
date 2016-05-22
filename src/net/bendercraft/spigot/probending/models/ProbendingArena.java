@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Nokorbis on 22/05/2016.
  */
-public class Arena {
+public class ProbendingArena {
 
     private Location blueSpawnLocation;
     private Location redSpawnLocation;
@@ -20,7 +20,7 @@ public class Arena {
     private List<Location> earthbendablesBlocks;
     private List<Location> waterbendablesBlocks;
 
-    public Arena() {
+    public ProbendingArena() {
         earthbendablesBlocks = new LinkedList<Location>();
         waterbendablesBlocks = new LinkedList<Location>();
     }
