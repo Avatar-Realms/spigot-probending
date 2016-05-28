@@ -1,4 +1,4 @@
-package net.bendercraft.spigot.probending.commands.subcommands;
+package net.bendercraft.spigot.probending.commands.subcommands.teams;
 
 import net.bendercraft.spigot.probending.commands.ProbendingCommand;
 import net.bendercraft.spigot.probending.commands.subcommands.teams.*;
