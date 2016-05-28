@@ -17,7 +17,7 @@ import java.util.List;
 public class TeamDeleteCommand extends ProbendingCommand {
     public TeamDeleteCommand() {
         super();
-        this.command = "delete";
+        this.command = "deleteTeam";
         this.aliases.add("del");
         this.aliases.add("d");
     }
@@ -45,11 +45,11 @@ public class TeamDeleteCommand extends ProbendingCommand {
 
     @Override
     public void printUsage(CommandSender sender) {
-        sender.sendMessage(ChatColor.AQUA + "/probending team delete <NAME>");
+        sender.sendMessage(ChatColor.AQUA + "/probending team deleteTeam <NAME>");
     }
 
     private boolean isAllowedToDelete(CommandSender sender, ProbendingTeam team) {
-        if (sender.hasPermission("probending.admin.team.delete")) {
+        if (sender.hasPermission("probending.admin.team.deleteTeam")) {
             return true;
         }
         if (sender instanceof Player) {

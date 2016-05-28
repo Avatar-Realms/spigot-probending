@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.bendercraft.spigot.probending.ProbendingPlugin;
 import net.bendercraft.spigot.probending.models.ProbendingTeam;
-import org.bukkit.Bukkit;
 
 import java.io.*;
 import java.util.Collection;
@@ -14,7 +13,7 @@ import java.util.LinkedList;
 /**
  * Created by Nokorbis on 5/04/2016.
  */
-public class JsonDataPersistence implements IDataPersistence {
+public class JsonTeamDataPersistence implements ITeamDataPersistence {
 
     private static final String CHARSET = "UTF-8";
     private static final String TEAM_FOLDER = "teams";
@@ -24,7 +23,7 @@ public class JsonDataPersistence implements IDataPersistence {
     private File dataFolder;
     private FilenameFilter filter;
 
-    public JsonDataPersistence(File dataFolder) {
+    public JsonTeamDataPersistence(File dataFolder) {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(ProbendingTeam.class, new ProbendingTeamSerializer());
         builder.setPrettyPrinting();
@@ -114,7 +113,7 @@ public class JsonDataPersistence implements IDataPersistence {
     }
 
     @Override
-    public void delete(ProbendingTeam team) {
+    public void deleteTeam(ProbendingTeam team) {
         File toDelete = new File(getTeamFolder(), team.getName().toLowerCase() + EXT);
         if (toDelete.exists()) {
             toDelete.delete();

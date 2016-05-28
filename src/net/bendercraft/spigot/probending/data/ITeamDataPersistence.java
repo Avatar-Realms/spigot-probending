@@ -7,7 +7,7 @@ import java.util.Collection;
 /**
  * Created by Nokorbis on 5/04/2016.
  */
-public interface IDataPersistence {
+public interface ITeamDataPersistence {
 
     Collection<ProbendingTeam> loadTeams();
 
@@ -17,5 +17,5 @@ public interface IDataPersistence {
 
     void saveAllTeams(Collection<ProbendingTeam> teams);
 
-    void delete(ProbendingTeam team);
+    void deleteTeam(ProbendingTeam team);
 }

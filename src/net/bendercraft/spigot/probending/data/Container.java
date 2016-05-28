@@ -15,7 +15,7 @@ public class Container {
     //Singleton
     private static Container instance = null;
 
-    private IDataPersistence data;
+    private ITeamDataPersistence data;
 
     /**
      * A Map containing all the probending teams of the server
@@ -32,7 +32,7 @@ public class Container {
     }
 
     private Container() {
-        data = new JsonDataPersistence(ProbendingPlugin.getInstance().getDataFolder());
+        data = new JsonTeamDataPersistence(ProbendingPlugin.getInstance().getDataFolder());
         teams = new HashMap<String, ProbendingTeam>();
         for (ProbendingTeam team : data.loadTeams()) {
             //We do no use the addTeam Method because on the end, we resave the team
@@ -75,7 +75,7 @@ public class Container {
 
     public void removeTeam(ProbendingTeam team) {
         if (team != null) {
-            data.delete(team);
+            data.deleteTeam(team);
             teams.remove(team.getName().toLowerCase());
         }
     }

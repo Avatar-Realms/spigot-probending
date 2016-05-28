@@ -16,7 +16,11 @@ public class ProbendingArena {
     private Location blueSpawnLocation;
     private Location redSpawnLocation;
 
-    //Used to help regeneration
+    //Only used for storage purpose
+    private Location arenaStartLocation;
+    private Location arenaEndLocation;
+
+    //Used to help regeneration / Not stored
     private List<Location> earthbendablesBlocks;
     private List<Location> waterbendablesBlocks;
 
@@ -32,6 +36,9 @@ public class ProbendingArena {
         if (!arenaStartLocation.getWorld().equals(arenaEndLocation.getWorld())) {
             throw new ProbendingArenaException(("error.arena.location.notsameworld"));
         }
+
+        this.arenaStartLocation = arenaStartLocation;
+        this.arenaEndLocation = arenaEndLocation;
 
         earthbendablesBlocks.clear();
         waterbendablesBlocks.clear();
