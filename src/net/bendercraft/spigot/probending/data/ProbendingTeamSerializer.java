@@ -41,7 +41,8 @@ public class ProbendingTeamSerializer implements JsonSerializer<ProbendingTeam>,
                 team.addMember(player);
             }
             return team;
-        } catch (ProbendingTeamNameException e) {
+        }
+        catch (ProbendingTeamNameException e) {
             ProbendingPlugin.getInstance().getLogger().warning("A team with a invalid name has been found in the files : " + name + ". \n" + e.getMessage());
             return null;
         }

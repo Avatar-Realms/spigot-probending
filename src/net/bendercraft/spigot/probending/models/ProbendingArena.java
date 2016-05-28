@@ -13,6 +13,8 @@ import java.util.List;
  */
 public class ProbendingArena {
 
+    private String name;
+
     private Location blueSpawnLocation;
     private Location redSpawnLocation;
 
@@ -27,6 +29,10 @@ public class ProbendingArena {
     public ProbendingArena() {
         earthbendablesBlocks = new LinkedList<Location>();
         waterbendablesBlocks = new LinkedList<Location>();
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setArenaRegion(Location arenaStartLocation, Location arenaEndLocation) throws ProbendingArenaException {
@@ -82,12 +88,24 @@ public class ProbendingArena {
         this.blueSpawnLocation = blueLocation;
     }
 
-    public Location getBlueSpawnLocation() {
+    public final Location getBlueSpawnLocation() {
         return blueSpawnLocation;
     }
 
-    public Location getRedSpawnLocation() {
+    public final Location getRedSpawnLocation() {
         return redSpawnLocation;
+    }
+
+    public final Location getArenaStartLocation() {
+        return arenaStartLocation;
+    }
+
+    public final Location getArenaEndLocation() {
+        return arenaEndLocation;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void regenArena() {
