@@ -65,42 +65,39 @@ public class ProbendingArenaSerializer implements JsonSerializer<ProbendingArena
         JsonObject root = new JsonObject();
         root.add("name", new JsonPrimitive(arena.getName()));
 
-        JsonObject jsLoc = new JsonObject();
-        Location loc = arena.getBlueSpawnLocation();
-        jsLoc.add("world", new JsonPrimitive(loc.getWorld().getUID().toString()));
-        jsLoc.add("x", new JsonPrimitive(loc.getX()));
-        jsLoc.add("y", new JsonPrimitive(loc.getY()));
-        jsLoc.add("z", new JsonPrimitive(loc.getZ()));
-        jsLoc.add("pitch", new JsonPrimitive(loc.getPitch()));
-        jsLoc.add("yaw", new JsonPrimitive(loc.getYaw()));
+        JsonObject jsLoc = getJsonPlayerLocation(arena.getBlueSpawnLocation());
         root.add("blue_spawn", jsLoc);
 
-        jsLoc = new JsonObject();
-        loc = arena.getRedSpawnLocation();
-        jsLoc.add("world", new JsonPrimitive(loc.getWorld().getUID().toString()));
-        jsLoc.add("x", new JsonPrimitive(loc.getX()));
-        jsLoc.add("y", new JsonPrimitive(loc.getY()));
-        jsLoc.add("z", new JsonPrimitive(loc.getZ()));
-        jsLoc.add("pitch", new JsonPrimitive(loc.getPitch()));
-        jsLoc.add("yaw", new JsonPrimitive(loc.getYaw()));
+        jsLoc = getJsonPlayerLocation(arena.getRedSpawnLocation());
         root.add("red_spawn", jsLoc);
 
-        jsLoc = new JsonObject();
-        loc = arena.getArenaStartLocation();
-        jsLoc.add("world", new JsonPrimitive(loc.getWorld().getUID().toString()));
-        jsLoc.add("x", new JsonPrimitive(loc.getBlockX()));
-        jsLoc.add("y", new JsonPrimitive(loc.getBlockY()));
-        jsLoc.add("z", new JsonPrimitive(loc.getBlockZ()));
+        jsLoc = getJsonBlockLocation(arena.getArenaStartLocation());
         root.add("start_arena", jsLoc);
 
-        jsLoc = new JsonObject();
-        loc = arena.getArenaEndLocation();
-        jsLoc.add("world", new JsonPrimitive(loc.getWorld().getUID().toString()));
-        jsLoc.add("x", new JsonPrimitive(loc.getBlockX()));
-        jsLoc.add("y", new JsonPrimitive(loc.getBlockY()));
-        jsLoc.add("z", new JsonPrimitive(loc.getBlockZ()));
+        jsLoc = getJsonBlockLocation(arena.getArenaEndLocation());
         root.add("end_arena", jsLoc);
 
         return root;
+    }
+
+    private JsonObject getJsonBlockLocation(Location loc) {
+        JsonObject jsLoc;
+        jsLoc = new JsonObject();
+        jsLoc.add("world", new JsonPrimitive(loc.getWorld().getUID().toString()));
+        jsLoc.add("x", new JsonPrimitive(loc.getBlockX()));
+        jsLoc.add("y", new JsonPrimitive(loc.getBlockY()));
+        jsLoc.add("z", new JsonPrimitive(loc.getBlockZ()));
+        return jsLoc;
+    }
+
+    private JsonObject getJsonPlayerLocation(Location loc) {
+        JsonObject jsLoc = new JsonObject();
+        jsLoc.add("world", new JsonPrimitive(loc.getWorld().getUID().toString()));
+        jsLoc.add("x", new JsonPrimitive(loc.getX()));
+        jsLoc.add("y", new JsonPrimitive(loc.getY()));
+        jsLoc.add("z", new JsonPrimitive(loc.getZ()));
+        jsLoc.add("pitch", new JsonPrimitive(loc.getPitch()));
+        jsLoc.add("yaw", new JsonPrimitive(loc.getYaw()));
+        return jsLoc;
     }
 }
