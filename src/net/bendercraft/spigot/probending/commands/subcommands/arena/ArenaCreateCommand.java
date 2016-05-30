@@ -5,6 +5,7 @@ import net.bendercraft.spigot.probending.data.Container;
 import net.bendercraft.spigot.probending.exceptions.ProbendingException;
 import net.bendercraft.spigot.probending.exceptions.ProbendingPermissionException;
 import net.bendercraft.spigot.probending.exceptions.ProbendingPlayerCommandException;
+import net.bendercraft.spigot.probending.models.ProbendingArena;
 import net.bendercraft.spigot.probending.models.ProbendingTeam;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -28,27 +29,26 @@ public class ArenaCreateCommand extends ProbendingCommand {
         if (!(sender instanceof Player)) {
             throw new ProbendingPlayerCommandException();
         }
-        if (!sender.hasPermission("probending.team.manage")) {
+        if (!sender.hasPermission("probending.arena.manage")) {
             throw new ProbendingPermissionException();
         }
         if (args.isEmpty()) {
             throw new ProbendingException("error.command.argument.name");
         }
         String name = args.remove(0);
-        ProbendingTeam team = Container.getInstance().getTeam(name);
-        if (team != null) {
+        ProbendingArena arena = Container.getInstance().getArena(name);
+        if (arena != null) {
             throw new ProbendingException("error.team.name.used");
         }
-        team = new ProbendingTeam();
-        team.setName(name);
-        team.addMember((Player) sender);
-        Container.getInstance().addTeam(team);
-        sender.sendMessage(ChatColor.GREEN + "You successfully created the team : " + name);
+        arena = new ProbendingArena();
+        arena.setName(name);
+        Container.getInstance().addArena(arena);
+        sender.sendMessage(ChatColor.GREEN + "You successfully created the arena : " + name);
         return true;
     }
 
     @Override
     public void printUsage(CommandSender sender) {
-        sender.sendMessage(ChatColor.AQUA + "/probending team create <NAME>");
+        sender.sendMessage(ChatColor.AQUA + "/probending arena create <NAME>");
     }
 }
