@@ -57,6 +57,9 @@ public class ArenaInfoCommand extends ProbendingCommand {
     }
 
     private final String formatLocation(Location loc) {
+        if (loc == null) {
+            return "No data";
+        }
         return loc.getBlockX() + ";" + loc.getBlockY() + ";" + loc.getBlockZ();
     }
 }
