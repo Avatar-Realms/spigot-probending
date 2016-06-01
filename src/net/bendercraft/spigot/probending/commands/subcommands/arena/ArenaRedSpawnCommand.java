@@ -7,19 +7,21 @@ import net.bendercraft.spigot.probending.exceptions.ProbendingPermissionExceptio
 import net.bendercraft.spigot.probending.models.ProbendingArena;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.List;
 
 /**
  * Created by Nokorbis on 01/06/2016.
  */
-public class ArenaDeleteCommand extends ProbendingCommand {
+public class ArenaRedSpawnCommand extends ProbendingCommand {
 
-    public ArenaDeleteCommand() {
-        this.command = "delete";
-        this.aliases.add("del");
-        this.aliases.add("remove");
-        this.aliases.add("rm");
+    public ArenaRedSpawnCommand() {
+        this.command = "setredspawnlocation";
+        this.aliases.add("red");
+        this.aliases.add("redspawn");
+        this.aliases.add("redlocation");
+        this.aliases.add("setred");
     }
 
     @Override
@@ -36,13 +38,16 @@ public class ArenaDeleteCommand extends ProbendingCommand {
             throw new ProbendingException("error.arena.unexisting");
         }
 
+        Player player = (Player) sender;
+        arena.setRedSpawnLocation(player.getLocation());
         Container.getInstance().removeArena(arena);
-        sender.sendMessage(ChatColor.YELLOW + "You successfully deleted the arena : " + name);
+        Container.getInstance().addArena(arena);
+        sender.sendMessage(ChatColor.GREEN + "You successfully set the red spawn location for the arena : " + name);
         return true;
     }
 
     @Override
     public void printUsage(CommandSender sender) {
-        sender.sendMessage(ChatColor.AQUA + "/probending arena delete <NAME>");
+        sender.sendMessage(ChatColor.AQUA + "/probending arena redspawn <ARENA_NAME>");
     }
 }

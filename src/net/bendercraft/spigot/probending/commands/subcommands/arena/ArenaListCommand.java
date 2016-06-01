@@ -6,7 +6,6 @@ import net.bendercraft.spigot.probending.exceptions.ProbendingException;
 import net.bendercraft.spigot.probending.exceptions.ProbendingPermissionException;
 import net.bendercraft.spigot.probending.exceptions.ProbendingPlayerCommandException;
 import net.bendercraft.spigot.probending.models.ProbendingArena;
-import net.bendercraft.spigot.probending.models.ProbendingTeam;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
