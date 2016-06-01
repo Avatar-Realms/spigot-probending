@@ -1,7 +1,7 @@
 package net.bendercraft.spigot.probending.commands;
 
 import net.bendercraft.spigot.probending.commands.subcommands.teams.TeamCommand;
-import net.bendercraft.spigot.probending.commands.subcommands.TournamentCommand;
+import net.bendercraft.spigot.probending.commands.subcommands.tournament.TournamentCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

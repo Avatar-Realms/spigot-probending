@@ -1,4 +1,4 @@
-package net.bendercraft.spigot.probending.commands.subcommands;
+package net.bendercraft.spigot.probending.commands.subcommands.tournament;
 
 import net.bendercraft.spigot.probending.commands.ProbendingCommand;
 import org.bukkit.command.CommandSender;
