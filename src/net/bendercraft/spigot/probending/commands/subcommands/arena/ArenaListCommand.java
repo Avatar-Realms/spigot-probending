@@ -1,10 +1,11 @@
-package net.bendercraft.spigot.probending.commands.subcommands.teams;
+package net.bendercraft.spigot.probending.commands.subcommands.arena;
 
 import net.bendercraft.spigot.probending.commands.ProbendingCommand;
 import net.bendercraft.spigot.probending.data.Container;
 import net.bendercraft.spigot.probending.exceptions.ProbendingException;
 import net.bendercraft.spigot.probending.exceptions.ProbendingPermissionException;
 import net.bendercraft.spigot.probending.exceptions.ProbendingPlayerCommandException;
+import net.bendercraft.spigot.probending.models.ProbendingArena;
 import net.bendercraft.spigot.probending.models.ProbendingTeam;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -14,12 +15,12 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by Nokorbis on 21/05/2016.
+ * Created by Nokorbis on 01/06/2016.
  */
-public class TeamListCommand extends ProbendingCommand {
-    public TeamListCommand() {
+public class ArenaListCommand extends ProbendingCommand {
+
+    public ArenaListCommand() {
         this.command = "list";
-        this.aliases.add("li");
         this.aliases.add("l");
     }
 
@@ -28,19 +29,19 @@ public class TeamListCommand extends ProbendingCommand {
         if (!(sender instanceof Player)) {
             throw new ProbendingPlayerCommandException();
         }
-        if (!sender.hasPermission("probending.admin.team.list")) {
+        if (!sender.hasPermission("probending.admin.arena.list")) {
             throw new ProbendingPermissionException();
         }
 
-        Collection<ProbendingTeam> teams = Container.getInstance().getTeams();
+        Collection<ProbendingArena> arenas = Container.getInstance().getArenas();
 
-        sender.sendMessage(ChatColor.BOLD + "Teams : ");
-        if (teams.isEmpty()) {
+        sender.sendMessage(ChatColor.BOLD + "Arenas : ");
+        if (arenas.isEmpty()) {
             sender.sendMessage("   - None");
         }
         else {
-            for (ProbendingTeam team : teams) {
-                sender.sendMessage("   - " + team.getName());
+            for (ProbendingArena arena : arenas) {
+                sender.sendMessage("   - " + arena.getName());
             }
         }
 
@@ -49,6 +50,6 @@ public class TeamListCommand extends ProbendingCommand {
 
     @Override
     public void printUsage(CommandSender sender) {
-        sender.sendMessage(ChatColor.AQUA + "/probending team list");
+        sender.sendMessage(ChatColor.AQUA + "/probending arena list");
     }
 }

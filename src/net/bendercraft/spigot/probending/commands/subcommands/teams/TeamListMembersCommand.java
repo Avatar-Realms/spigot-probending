@@ -57,6 +57,6 @@ public class TeamListMembersCommand extends ProbendingCommand {
 
     @Override
     public void printUsage(CommandSender sender) {
-        sender.sendMessage(ChatColor.AQUA + "/probending team create <NAME>");
+        sender.sendMessage(ChatColor.AQUA + "/probending team listmembers <TEAM_NAME>");
     }
 }

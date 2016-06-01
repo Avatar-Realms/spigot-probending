@@ -23,6 +23,7 @@ public class ArenaDeleteCommand extends ProbendingCommand {
         this.aliases.add("rm");
     }
 
+    @Override
     public boolean execute(CommandSender sender, List<String> args) throws ProbendingException {
         if (!sender.hasPermission("probending.arena.manage")) {
             throw new ProbendingPermissionException();
