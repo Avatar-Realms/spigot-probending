@@ -45,11 +45,11 @@ public class TeamDeleteCommand extends ProbendingCommand {
 
     @Override
     public void printUsage(CommandSender sender) {
-        sender.sendMessage(ChatColor.AQUA + "/probending team deleteTeam <NAME>");
+        sender.sendMessage(ChatColor.AQUA + "/probending team delete <NAME>");
     }
 
     private boolean isAllowedToDelete(CommandSender sender, ProbendingTeam team) {
-        if (sender.hasPermission("probending.admin.team.deleteTeam")) {
+        if (sender.hasPermission("probending.admin.team.delete")) {
             return true;
         }
         if (sender instanceof Player) {
