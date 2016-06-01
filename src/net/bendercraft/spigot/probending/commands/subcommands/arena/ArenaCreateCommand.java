@@ -34,11 +34,13 @@ public class ArenaCreateCommand extends ProbendingCommand {
         if (args.isEmpty()) {
             throw new ProbendingException("error.command.argument.name");
         }
+
         String name = args.remove(0);
         ProbendingArena arena = Container.getInstance().getArena(name);
         if (arena != null) {
             throw new ProbendingException("error.team.name.used");
         }
+
         arena = new ProbendingArena();
         arena.setName(name);
         Container.getInstance().addArena(arena);

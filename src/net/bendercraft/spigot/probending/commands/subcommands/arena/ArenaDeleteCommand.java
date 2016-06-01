@@ -30,6 +30,7 @@ public class ArenaDeleteCommand extends ProbendingCommand {
         if (args.isEmpty()) {
             throw new ProbendingException("error.command.argument.more");
         }
+
         String name = args.remove(0);
         ProbendingArena arena = Container.getInstance().getArena(name);
         if (arena == null) {

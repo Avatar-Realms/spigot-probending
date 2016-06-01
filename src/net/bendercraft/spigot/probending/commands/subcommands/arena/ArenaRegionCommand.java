@@ -32,17 +32,20 @@ public class ArenaRegionCommand extends ProbendingCommand {
         if (args.isEmpty()) {
             throw new ProbendingException("error.command.argument.more");
         }
+
         String name = args.remove(0);
         ProbendingArena arena = Container.getInstance().getArena(name);
         if (arena == null) {
             throw new ProbendingException("error.arena.unexisting");
         }
+
         Player player = (Player) sender;
         Location startLocation = getLocation(player, args);
         Location endLocation = getLocation(player, args);
         arena.setArenaRegion(startLocation, endLocation);
-        Container.getInstance().removeArena(arena);
+        Container.getInstance().removeArena(arena); // To make it saved
         Container.getInstance().addArena(arena);
+
         sender.sendMessage(ChatColor.GREEN + "You successfully set the red spawn location for the arena : " + name);
         return true;
     }

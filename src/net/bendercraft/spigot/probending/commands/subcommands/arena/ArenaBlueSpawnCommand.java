@@ -32,6 +32,7 @@ public class ArenaBlueSpawnCommand extends ProbendingCommand {
         if (args.isEmpty()) {
             throw new ProbendingException("error.command.argument.more");
         }
+
         String name = args.remove(0);
         ProbendingArena arena = Container.getInstance().getArena(name);
         if (arena == null) {
@@ -40,8 +41,9 @@ public class ArenaBlueSpawnCommand extends ProbendingCommand {
 
         Player player = (Player) sender;
         arena.setBlueSpawnLocation(player.getLocation());
-        Container.getInstance().removeArena(arena);
+        Container.getInstance().removeArena(arena); // To make it saved
         Container.getInstance().addArena(arena);
+
         sender.sendMessage(ChatColor.GREEN + "You successfully set the blue spawn location for the arena : " + name);
         return true;
     }
