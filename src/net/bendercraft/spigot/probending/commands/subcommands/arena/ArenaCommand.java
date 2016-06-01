@@ -11,5 +11,13 @@ public class ArenaCommand extends ProbendingCommand {
         this.command = "arena";
         this.aliases.add("ar");
         this.aliases.add("a");
+
+        this.addSubCommand(new ArenaCreateCommand());
+        this.addSubCommand(new ArenaDeleteCommand());
+        this.addSubCommand(new ArenaInfoCommand());
+        this.addSubCommand(new ArenaListCommand());
+        this.addSubCommand(new ArenaRegionCommand());
+        this.addSubCommand(new ArenaBlueSpawnCommand());
+        this.addSubCommand(new ArenaRedSpawnCommand());
     }
 }

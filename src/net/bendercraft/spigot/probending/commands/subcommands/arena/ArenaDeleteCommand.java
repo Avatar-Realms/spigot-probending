@@ -43,6 +43,6 @@ public class ArenaDeleteCommand extends ProbendingCommand {
 
     @Override
     public void printUsage(CommandSender sender) {
-        sender.sendMessage(ChatColor.AQUA + "/probending arena delete <NAME>");
+        sender.sendMessage(ChatColor.AQUA + "/probending arena delete <ARENA_NAME>");
     }
 }
