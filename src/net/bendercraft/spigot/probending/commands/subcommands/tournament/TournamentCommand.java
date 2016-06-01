@@ -13,15 +13,8 @@ public class TournamentCommand extends ProbendingCommand {
     public TournamentCommand() {
         this.command = "tournament";
         this.aliases.add("tour");
+
+        this.addSubCommand(new TournamentRegisterCommand());
     }
 
-    @Override
-    public boolean execute(CommandSender sender, List<String> args) {
-        return false;
-    }
-
-    @Override
-    public void printUsage(CommandSender sender) {
-
-    }
 }
