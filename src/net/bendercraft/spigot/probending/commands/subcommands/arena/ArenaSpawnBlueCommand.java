@@ -14,14 +14,14 @@ import java.util.List;
 /**
  * Created by Nokorbis on 01/06/2016.
  */
-public class ArenaRedSpawnCommand extends ProbendingCommand {
+public class ArenaSpawnBlueCommand extends ProbendingCommand {
 
-    public ArenaRedSpawnCommand() {
-        this.command = "setredspawnlocation";
-        this.aliases.add("red");
-        this.aliases.add("redspawn");
-        this.aliases.add("redlocation");
-        this.aliases.add("setred");
+    public ArenaSpawnBlueCommand() {
+        this.command = "setbluespawnlocation";
+        this.aliases.add("blue");
+        this.aliases.add("bluespawn");
+        this.aliases.add("bluelocation");
+        this.aliases.add("setblue");
     }
 
     @Override
@@ -40,11 +40,11 @@ public class ArenaRedSpawnCommand extends ProbendingCommand {
         }
 
         Player player = (Player) sender;
-        arena.setRedSpawnLocation(player.getLocation());
+        arena.setBlueSpawnLocation(player.getLocation());
         Container.getInstance().removeArena(arena); // To make it saved
         Container.getInstance().addArena(arena);
 
-        sender.sendMessage(ChatColor.GREEN + "You successfully set the red spawn location for the arena : " + name);
+        sender.sendMessage(ChatColor.GREEN + "You successfully set the blue spawn location for the arena : " + name);
         return true;
     }
 

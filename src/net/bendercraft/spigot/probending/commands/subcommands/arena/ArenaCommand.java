@@ -17,7 +17,7 @@ public class ArenaCommand extends ProbendingCommand {
         this.addSubCommand(new ArenaInfoCommand());
         this.addSubCommand(new ArenaListCommand());
         this.addSubCommand(new ArenaRegionCommand());
-        this.addSubCommand(new ArenaBlueSpawnCommand());
-        this.addSubCommand(new ArenaRedSpawnCommand());
+        this.addSubCommand(new ArenaSpawnBlueCommand());
+        this.addSubCommand(new ArenaSpawnRedCommand());
     }
 }
